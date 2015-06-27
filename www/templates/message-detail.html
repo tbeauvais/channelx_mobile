@@ -1,8 +1,5 @@
 <ion-view view-title="{{message.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{message.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{message.lastText}}
-    </p>
+  <ion-content class="padding" overflow-scroll="true">
+    <iframe ng-src="{{messageLink}}" width="100%" height="100%" frameborder="0"></iframe>
   </ion-content>
 </ion-view>

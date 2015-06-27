@@ -10,9 +10,15 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('MessageDetailCtrl', function($scope, $stateParams, Messages) {
+.controller('MessageDetailCtrl', function($scope, $sce, $stateParams, Messages) {
   console.log("MessageDetailCtrl hit!!!!!!!!! " + $stateParams.messageId);
   $scope.message = Messages.get($stateParams.messageId);
+
+  $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link);
+
+  console.log("MessageDetailCtrl link " +  $scope.messageLink);
+
+
 })
 
 .controller('AccountCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordovaToast, $http) {
