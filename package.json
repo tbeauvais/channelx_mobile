@@ -29,7 +29,11 @@
       "id": "nl.x-services.plugins.toast"
     },
     "cordova-plugin-dialogs",
-    "cordova-plugin-file"
+    "cordova-plugin-file",
+    {
+      "locator": "https://github.com/metova/coffee-script-cordova-plugin",
+      "id": "com.metova.cordova.coffeescript"
+    }
   ],
   "cordovaPlatforms": []
 }
