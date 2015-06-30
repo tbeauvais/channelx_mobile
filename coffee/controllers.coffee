@@ -1,14 +1,17 @@
 angular.module("starter.controllers", []).controller("DashCtrl", ($scope) ->
 ).controller("MessagesCtrl", ($scope, Messages) ->
   console.log "MessagesCtrl hit!!!!!!!!! "
-  $scope.messages = Messages.all()
+  $scope.messages = Messages.query()
   $scope.remove = (message) ->
     Messages.remove message
 ).controller("MessageDetailCtrl", ($scope, $sce, $stateParams, Messages) ->
+
   console.log "MessageDetailCtrl hit!!!!!!!!! " + $stateParams.messageId
-  $scope.message = Messages.get($stateParams.messageId)
-  $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link)
-  console.log "MessageDetailCtrl link " + $scope.messageLink
+
+  $scope.message = Messages.get {id: $stateParams.messageId}, ->
+    $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link)
+    console.log "MessageDetailCtrl link " + $scope.messageLink
+
 ).controller("AccountCtrl", ($scope, $cordovaPush, $cordovaDialogs, $cordovaToast, $http) ->
   $scope.settings =
     enableNotifications: true
