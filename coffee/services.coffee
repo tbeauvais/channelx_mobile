@@ -61,5 +61,22 @@ angular.module("starter.services", [])
 #    null
 
 
-angular.module("starter.services").factory "Messages", ($resource) ->
-  $resource 'http://localhost:8080/api/v1/messages/:id'
+angular.module("starter.services").factory "Messages", ($resource, Settings) ->
+  debugger
+  host = 'channelx-api.mybluemix.net'
+  local = Settings.get()['localServer']
+  if local
+    host = 'localhost:8080'
+
+  $resource "http://#{host}/api/v1/messages/:id"
+
+angular.module("starter.services").factory "Settings",  ->
+
+  get:  ->
+    if localStorage['app_settings']
+      JSON.parse(localStorage['app_settings'])
+    else
+      {}
+
+  update: (settings) ->
+    localStorage['app_settings'] = JSON.stringify(settings)

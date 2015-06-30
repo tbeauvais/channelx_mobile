@@ -12,10 +12,18 @@ angular.module("starter.controllers", []).controller("DashCtrl", ($scope) ->
     $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link)
     console.log "MessageDetailCtrl link " + $scope.messageLink
 
-).controller("AccountCtrl", ($scope, $cordovaPush, $cordovaDialogs, $cordovaToast, $http) ->
-  $scope.settings =
-    enableNotifications: true
-    enableDeals: false
+).controller("AccountCtrl", ($scope, Settings) ->
+
+  settings = Settings.get()
+  if !settings
+    Settings.update({enableNotifications: true, enableDeals: false})
+    settings = Settings.get()
+
+  $scope.settings = settings
+
+  $scope.$watchCollection 'settings', (newVal, oldVal) ->
+    Settings.update(newVal)
+
 ).controller "AppCtrl", ($scope, $cordovaPush, $cordovaDialogs, $cordovaToast, $http) ->
 
 # Register
