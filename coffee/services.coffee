@@ -62,7 +62,6 @@ angular.module("starter.services", [])
 
 
 angular.module("starter.services").factory "Messages", ($resource, Settings) ->
-  debugger
   host = 'channelx-api.mybluemix.net'
   local = Settings.get()['localServer']
   if local

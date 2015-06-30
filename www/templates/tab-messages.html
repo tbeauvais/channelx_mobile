@@ -1,6 +1,6 @@
 <ion-view view-title="Messages">
   <ion-content>
-    <ion-refresher pulling-text="Pull to refresh..." on-refresh="">
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="refreshMessages()">
     </ion-refresher>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in messages" type="item-text-wrap" href="#/tab/messages/{{message.id}}">
