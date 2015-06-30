@@ -3,11 +3,12 @@ angular.module("starter.controllers", []).controller("DashCtrl", ($scope) ->
   console.log "MessagesCtrl hit!!!!!!!!! "
   $scope.messages = Messages.query()
   $scope.remove = (message) ->
-    Messages.delete({id: message.id})
+    Messages.delete {id: message.id}, ->
+      $scope.messages = Messages.query()
 
   $scope.refreshMessages =  ->
     $scope.messages = Messages.query ->
-      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$broadcast('scroll.refreshComplete')
 
 
 ).controller("MessageDetailCtrl", ($scope, $sce, $stateParams, Messages) ->
