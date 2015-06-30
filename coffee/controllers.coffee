@@ -11,13 +11,13 @@ angular.module("starter.controllers", []).controller("DashCtrl", ($scope) ->
       $scope.$broadcast('scroll.refreshComplete')
 
 
-).controller("MessageDetailCtrl", ($scope, $sce, $stateParams, Messages) ->
+).controller("MessageDetailCtrl", ($scope, $sce, $timeout, $stateParams, Messages) ->
 
-  console.log "MessageDetailCtrl hit!!!!!!!!! " + $stateParams.messageId
-
+  $scope.messageName = 'Details'
   $scope.message = Messages.get {id: $stateParams.messageId}, ->
+    # TODO not updating title
+    $scope.messageName = $scope.message.name
     $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link)
-    console.log "MessageDetailCtrl link " + $scope.messageLink
 
 ).controller("AccountCtrl", ($scope, Settings) ->
 
@@ -30,6 +30,10 @@ angular.module("starter.controllers", []).controller("DashCtrl", ($scope) ->
 
   $scope.$watchCollection 'settings', (newVal, oldVal) ->
     Settings.update(newVal)
+
+).controller("SubscriptionsCtrl", ($scope) ->
+
+  console.log "SubscriptionsCtrl hit!!!!!!!!! "
 
 ).controller "AppCtrl", ($scope, $cordovaPush, $cordovaDialogs, $cordovaToast, $http) ->
 

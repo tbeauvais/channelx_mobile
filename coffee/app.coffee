@@ -47,6 +47,12 @@ angular.module("starter", [ "ionic", "starter.controllers", "starter.services", 
       "tab-messages":
         templateUrl: "templates/message-detail.html"
         controller: "MessageDetailCtrl"
+  ).state("tab.subscriptions",
+    url: "/subscriptions"
+    views:
+      "tab-subscriptions":
+        templateUrl: "templates/tab-subscriptions.html"
+        controller: "SubscriptionsCtrl"
   ).state "tab.account",
     url: "/account"
     views:
