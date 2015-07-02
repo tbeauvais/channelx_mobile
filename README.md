@@ -5,7 +5,7 @@ Constant Contact Direct Marketing Mobile App
 
 ## Requirements
 
-This project build a mobile ap using Cordove (PhoneGap), and the Ionic framework.
+This project builds a mobile app using Cordove (PhoneGap), and the Ionic framework.
 Use the following steps to install the required software:
 
 ```  
@@ -16,4 +16,6 @@ Use the following steps to install the required software:
  $ sudo npm install -g ionic
  $ sudo npm install -g coffee-script
 ```
+
+
 
