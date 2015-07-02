@@ -35,5 +35,7 @@
       "id": "com.metova.cordova.coffeescript"
     }
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios"
+  ]
 }
