@@ -35,6 +35,8 @@ Use the following steps to install the required software:
   $ ionic serve
 ```
 
+![screen shot](doc/mobile_view_chrome.png "Screen Shot")
+
 
 #### Run in the Simulator 
 From the root of the project
