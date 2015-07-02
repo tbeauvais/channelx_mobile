@@ -32,9 +32,23 @@ Use the following steps to install the required software:
 
 Run in the Browser
 ```
-  $ cd www
-  $ http-server -a localhost -p 8000
-  Point your Browser at http://localhost:8000/
+  $ ionic serve
+```
+
+
+Run in the Simulator 
+
+From the root of the project
+```
+  $ sudo npm install -g ios-sim
+  $ ionic emulate ios
+```
+
+Run on Device
+Note - You MUST have a Apple Developer account, and install the proper certificates and provisioning profile: https://developer.apple.com/membercenter/index.action 
+```
+  $ sudo npm install -g ios-deploy
+  $ ionic run ios --device
 ```
 
 
