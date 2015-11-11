@@ -18,13 +18,24 @@ Use the following steps to install the required software:
  $ sudo npm install -g http-server
 ```
 
+## Add Plugins
+```
+$ ionic plugin add cordova-plugin-device
+$ ionic plugin add cordova-plugin-console
+$ ionic plugin add cordova-plugin-dialogs    
+$ ionic plugin add cordova-plugin-file
+$ ionic plugin add https://github.com/metova/coffee-script-cordova-plugin
+$ ionic plugin add https://github.com/phonegap-build/PushPlugin
+$ ionic plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
+```
+
+
 ## Build the Mobile App
 
 ```
   $ git clone <this repo>
   $ cd channelx_mobile
   $ ionic platform add ios
-  $ ionic plugin add https://github.com/metova/coffee-script-cordova-plugin
   $ ionic build ios
 ```
 
@@ -34,6 +45,8 @@ Use the following steps to install the required software:
 ```
   $ ionic serve
 ```
+
+![screen shot](doc/mobile_view_chrome.png "Screen Shot")
 
 
 #### Run in the Simulator 
