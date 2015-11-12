@@ -15,7 +15,9 @@ angular.module("starter", [ "ionic", "starter.controllers", "starter.services", 
     cordova.plugins.Keyboard.hideKeyboardAccessoryBar true  if window.cordova and window.cordova.plugins and window.cordova.plugins.Keyboard
     StatusBar.styleLightContent()  if window.StatusBar
 
-).config ($stateProvider, $urlRouterProvider) ->
+).config ($stateProvider, $urlRouterProvider, $compileProvider) ->
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|map|geo|skype):/)
+
 
 # Ionic uses AngularUI Router which uses the concept of states
 # Learn more here: https://github.com/angular-ui/ui-router
@@ -29,12 +31,12 @@ angular.module("starter", [ "ionic", "starter.controllers", "starter.services", 
     url: "/tab"
     abstract: true
     templateUrl: "templates/tabs.html"
-  ).state("tab.dash",
-    url: "/dash"
+  ).state("tab.search",
+    url: "/search"
     views:
-      "tab-dash":
-        templateUrl: "templates/tab-dash.html"
-        controller: "DashCtrl"
+      "tab-search":
+        templateUrl: "templates/tab-search.html"
+        controller: "SearchCtrl"
   ).state("tab.messages",
     url: "/messages"
     views:

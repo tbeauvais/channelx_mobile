@@ -1,4 +1,24 @@
-angular.module("starter.controllers", []).controller("DashCtrl", ($scope) ->
+angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Businesses) ->
+  console.log "SearchCtrl hit!!!!!!!!! "
+  $scope.businesses = Businesses.query()
+  $scope.currentBusiness = ''
+  $scope.localMode = true
+
+  $scope.toggleDetails = (business) ->
+    console.log "toggleDetails hit!!!!!!!!! "
+    $scope.currentBusiness = business.id
+
+  $scope.showDetails = (business) ->
+    console.log "showDetails hit!!!!!!!!! "
+    $scope.currentBusiness == business.id
+
+  $scope.showMap =  (business) ->
+    console.log "showMap hit!!!!!!!!! "
+    # directions.navigateTo("51.50722", "-0.12750")
+    directions.navigateToAddress(business.full_address)
+
+
+
 ).controller("MessagesCtrl", ($scope, Messages) ->
   console.log "MessagesCtrl hit!!!!!!!!! "
   $scope.messages = Messages.query()

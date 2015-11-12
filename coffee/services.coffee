@@ -69,6 +69,15 @@ angular.module("starter.services").factory "Messages", ($resource, Settings) ->
 
   $resource "http://#{host}/api/v1/messages/:id"
 
+angular.module("starter.services").factory "Businesses", ($resource, Settings) ->
+  host = 'channelx-api.mybluemix.net'
+  local = Settings.get()['localServer']
+  if local
+    host = 'localhost:8080'
+
+  $resource "http://#{host}/api/v1/businesses/:id"
+
+
 angular.module("starter.services").factory "Settings",  ->
 
   get:  ->
