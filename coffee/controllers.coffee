@@ -1,4 +1,4 @@
-angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Businesses) ->
+angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Businesses, $cordovaGeolocation) ->
   console.log "SearchCtrl hit!!!!!!!!! "
   $scope.businesses = []
   $scope.currentBusiness = ''
@@ -7,7 +7,10 @@ angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Busi
 
   $scope.searchBusinesses =  ->
     console.log "searchBusinesses hit!!!!!!!!! #{$scope.searchInfo.type}"
-    $scope.businesses = Businesses.query({ type: $scope.searchInfo.type })
+    posOptions = { timeout: 10000, enableHighAccuracy: false }
+    $cordovaGeolocation.getCurrentPosition(posOptions).then (position) ->
+      console.log "searchBusinesses latitude !!!!!!!!! #{position.coords.latitude}"
+      $scope.businesses = Businesses.query({ latitude: position.coords.latitude, longitude: position.coords.longitude, type: $scope.searchInfo.type })
 
   $scope.toggleDetails = (business) ->
     console.log "toggleDetails hit!!!!!!!!! "

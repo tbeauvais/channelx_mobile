@@ -25,6 +25,7 @@ $ ionic plugin add cordova-plugin-console
 $ ionic plugin add cordova-plugin-dialogs    
 $ ionic plugin add cordova-plugin-file
 $ ionic plugin add cordova-plugin-directions
+$ ionic plugin add cordova-plugin-geolocation
 $ ionic plugin add https://github.com/metova/coffee-script-cordova-plugin
 $ ionic plugin add https://github.com/phonegap-build/PushPlugin
 $ ionic plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
