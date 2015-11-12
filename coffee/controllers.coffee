@@ -1,12 +1,20 @@
 angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Businesses) ->
   console.log "SearchCtrl hit!!!!!!!!! "
-  $scope.businesses = Businesses.query()
+  $scope.businesses = []
   $scope.currentBusiness = ''
   $scope.localMode = true
+  $scope.searchInfo = { type: 'Petstore' }
+
+  $scope.searchBusinesses =  ->
+    console.log "searchBusinesses hit!!!!!!!!! #{$scope.searchInfo.type}"
+    $scope.businesses = Businesses.query({ type: $scope.searchInfo.type })
 
   $scope.toggleDetails = (business) ->
     console.log "toggleDetails hit!!!!!!!!! "
-    $scope.currentBusiness = business.id
+    if $scope.currentBusiness != business.id
+      $scope.currentBusiness = business.id
+    else
+      $scope.currentBusiness = ''
 
   $scope.showDetails = (business) ->
     console.log "showDetails hit!!!!!!!!! "
@@ -16,7 +24,6 @@ angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Busi
     console.log "showMap hit!!!!!!!!! "
     # directions.navigateTo("51.50722", "-0.12750")
     directions.navigateToAddress(business.full_address)
-
 
 
 ).controller("MessagesCtrl", ($scope, Messages) ->

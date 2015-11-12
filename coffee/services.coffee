@@ -75,7 +75,7 @@ angular.module("starter.services").factory "Businesses", ($resource, Settings) -
   if local
     host = 'localhost:8080'
 
-  $resource "http://#{host}/api/v1/businesses/:id"
+  $resource "http://#{host}/api/v1/businesses", { latitude: '42.418725', longitude: '-71.258752', type: '@type' }
 
 
 angular.module("starter.services").factory "Settings",  ->
