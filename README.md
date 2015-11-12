@@ -45,6 +45,7 @@ $ ionic plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
 
 #### Run in the Browser
 ```
+  $ ionic build
   $ ionic serve
 ```
 
@@ -55,6 +56,7 @@ $ ionic plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
 From the root of the project
 ```
   $ sudo npm install -g ios-sim
+  $ ionic build
   $ ionic emulate ios
 ```
 
@@ -62,6 +64,7 @@ From the root of the project
 Note - You MUST have a Apple Developer account, and install the proper certificates and provisioning profile: https://developer.apple.com/membercenter/index.action 
 ```
   $ sudo npm install -g ios-deploy
+  $ ionic build
   $ ionic run ios --device
 ```
 
