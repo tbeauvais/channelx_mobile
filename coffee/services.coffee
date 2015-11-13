@@ -67,7 +67,16 @@ angular.module("starter.services").factory "Messages", ($resource, Settings) ->
   if local
     host = 'localhost:8080'
 
-  $resource "http://#{host}/api/v1/messages/:id"
+  $resource "https://#{host}/api/v1/messages/:id"
+
+angular.module("starter.services").factory "Subscribe", ($resource, Settings) ->
+  host = 'channelx-api.mybluemix.net'
+  local = Settings.get()['localServer']
+  if local
+    host = 'localhost:8080'
+
+  $resource "https://#{host}/api/v1/messages/:id/subscribe",  { id: '@_id' }, { subscribe: { method: 'POST', params: { id: '@id' } } }
+
 
 angular.module("starter.services").factory "Businesses", ($resource, Settings) ->
   host = 'channelx-api.mybluemix.net'
@@ -76,7 +85,7 @@ angular.module("starter.services").factory "Businesses", ($resource, Settings) -
     host = 'localhost:8080'
 
   # $resource "http://#{host}/api/v1/businesses", { latitude: '42.418725', longitude: '-71.258752', type: '@type' }
-  $resource "http://#{host}/api/v1/businesses", { latitude: '@lat', longitude: '@lon', type: '@type' }
+  $resource "https://#{host}/api/v1/businesses", { latitude: '@lat', longitude: '@lon', type: '@type' }
 
 
 angular.module("starter.services").factory "Settings",  ->

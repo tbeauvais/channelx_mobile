@@ -1,16 +1,26 @@
-angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Businesses, $cordovaGeolocation) ->
+angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, $route, $location, Businesses, Subscribe, $cordovaGeolocation) ->
   console.log "SearchCtrl hit!!!!!!!!! "
-  $scope.businesses = []
+  $scope.businesses = Businesses.query()
   $scope.currentBusiness = ''
   $scope.localMode = true
-  $scope.searchInfo = { type: 'Petstore' }
+  $scope.searchInfo = { type: 'Flowers' }
 
   $scope.searchBusinesses =  ->
     console.log "searchBusinesses hit!!!!!!!!! #{$scope.searchInfo.type}"
     posOptions = { timeout: 10000, enableHighAccuracy: false }
-    $cordovaGeolocation.getCurrentPosition(posOptions).then (position) ->
-      console.log "searchBusinesses latitude !!!!!!!!! #{position.coords.latitude}"
+    $cordovaGeolocation.getCurrentPosition(posOptions).then ((position) ->
+      console.log "searchBusinesses latitude !!!!!!!!! #{position.coords.latitude}  #{position.coords.longitude}"
       $scope.businesses = Businesses.query({ latitude: position.coords.latitude, longitude: position.coords.longitude, type: $scope.searchInfo.type })
+    ), (err) ->
+        console.log "Uh oh !!!!!!!! #{err.message}"
+
+
+  $scope.subscribe = (business) ->
+    console.log "subscribe hit!!!!!!!!! #{business.id}"
+    sub = new Subscribe( { id: business.id, notify: 'true', type: business.type, name: business.name, logo: business.picture, lastText: "Thanks for joining us!!"} )
+    Subscribe.subscribe(sub)
+    $location.path('messages')
+    $route.reload()
 
   $scope.toggleDetails = (business) ->
     console.log "toggleDetails hit!!!!!!!!! "
@@ -20,7 +30,6 @@ angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, Busi
       $scope.currentBusiness = ''
 
   $scope.showDetails = (business) ->
-    console.log "showDetails hit!!!!!!!!! "
     $scope.currentBusiness == business.id
 
   $scope.showMap =  (business) ->

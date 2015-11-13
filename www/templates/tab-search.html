@@ -30,7 +30,12 @@
 
           <ion-item class="item-accordion" ng-show="showDetails(business)">
               <h2>{{business.description}}</h2>
-              <a ng-click="showMap(business)" >Get Directions</a>
+              <p>{{business.full_address}}</p>
+              <ion-checkbox class='subscribe' ng-click="subscribe(business)" ng-model="subscribed">Subscribe</ion-checkbox>
+              <button class="button button-balanced" ng-click="showMap(business)">
+                 Get Directions
+              </button>
+
           </ion-item>
           </div>
       </ion-list>
