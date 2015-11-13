@@ -51,12 +51,15 @@ angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, $rou
 
 
 ).controller("MessageDetailCtrl", ($scope, $sce, $timeout, $stateParams, Messages) ->
+  console.log "MessageDetailCtrl hit!!!!!!!!! "
 
   $scope.messageName = 'Details'
-  $scope.message = Messages.get {id: $stateParams.messageId}, ->
-    # TODO not updating title
-    $scope.messageName = $scope.message.name
-    $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link)
+  $scope.messageLink = $sce.trustAsResourceUrl("https://innojam-channel-x.s3.amazonaws.com/221e6bd0-6b99-0133-47d5-46a2714e2106.html")
+
+#  $scope.message = Messages.get {id: $stateParams.messageId}, ->
+#    # TODO not updating title
+#    $scope.messageName = $scope.message.name
+#    $scope.messageLink = $sce.trustAsResourceUrl($scope.message.link)
 
 ).controller("AccountCtrl", ($scope, Settings) ->
 

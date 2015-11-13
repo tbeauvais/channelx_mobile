@@ -31,18 +31,12 @@ angular.module("starter", [ "ionic", "starter.controllers", "starter.services", 
     url: "/tab"
     abstract: true
     templateUrl: "templates/tabs.html"
-  ).state("tab.search",
-    url: "/search"
-    views:
-      "tab-search":
-        templateUrl: "templates/tab-search.html"
-        controller: "SearchCtrl"
   ).state("tab.messages",
     url: "/messages"
     views:
       "tab-messages":
-        templateUrl: "templates/tab-messages.html"
-        controller: "MessagesCtrl"
+        templateUrl: "templates/message-detail.html"
+        controller: "MessageDetailCtrl"
   ).state("tab.message-detail",
     url: "/messages/:messageId"
     views:
