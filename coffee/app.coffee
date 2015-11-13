@@ -35,8 +35,8 @@ angular.module("starter", [ "ionic", "starter.controllers", "starter.services", 
     url: "/messages"
     views:
       "tab-messages":
-        templateUrl: "templates/message-detail.html"
-        controller: "MessageDetailCtrl"
+        templateUrl: "templates/tab-messages.html"
+        controller: "MessagesCtrl"
   ).state("tab.message-detail",
     url: "/messages/:messageId"
     views:
@@ -49,13 +49,19 @@ angular.module("starter", [ "ionic", "starter.controllers", "starter.services", 
       "tab-subscriptions":
         templateUrl: "templates/tab-subscriptions.html"
         controller: "SubscriptionsCtrl"
-  ).state "tab.account",
+  ).state("tab.account",
     url: "/account"
     views:
       "tab-account":
         templateUrl: "templates/tab-account.html"
         controller: "AccountCtrl"
-
+  ).state("tab.search",
+    url: "/search"
+    views:
+      "tab-search":
+        templateUrl: "templates/tab-search.html"
+        controller: "SearchCtrl"
+  )
 
   # if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise "/tab/messages"
