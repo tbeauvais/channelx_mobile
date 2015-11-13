@@ -17,3 +17,7 @@
 .subscribe {
   border-style: none;
 }
+
+.map-link {
+    color: #007aff;
+}
