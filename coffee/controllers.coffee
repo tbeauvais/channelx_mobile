@@ -19,8 +19,8 @@ angular.module("starter.controllers", []).controller("SearchCtrl", ($scope, $rou
     console.log "subscribe hit!!!!!!!!! #{business.id}"
     sub = new Subscribe( { id: business.id, notify: 'true', type: business.type, name: business.name, logo: business.picture, lastText: "Thanks for joining us!!"} )
     Subscribe.subscribe(sub)
-    $location.path('messages')
-    $route.reload()
+    #$location.path('messages')
+    #$route.reload()
 
   $scope.toggleDetails = (business) ->
     console.log "toggleDetails hit!!!!!!!!! "
